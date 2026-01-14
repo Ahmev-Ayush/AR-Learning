@@ -8,12 +8,13 @@ using UnityEngine.InputSystem.EnhancedTouch;
 // 2. Alias for Touch to avoid ambiguity
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch; 
 
+
 public class placeCarInScene : MonoBehaviour
 {
     public GameObject carPrefab;
     public GameObject placementIndicator;
 
-    // We only need the ARRaycastManager, not the whole XROrigin
+    // We only need the ARRaycastManager, not the whole XROrigin component
     [SerializeField] private ARRaycastManager raycastManager;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
