@@ -47,6 +47,13 @@ public class ImageTrackingManager : MonoBehaviour
     {
         string name = trackedImage.referenceImage.name;
 
+        // Check if the reference image or its name is null before proceeding
+        if (trackedImage.referenceImage == null || string.IsNullOrEmpty(trackedImage.referenceImage.name))
+        {
+            Debug.LogWarning("Found a tracked image with no reference name!");
+            return; 
+        }
+
         // 1. Instantiate if missing
         if (!spawnedPrefabs.ContainsKey(name) && prefabDictionary.ContainsKey(name))
         {
@@ -62,11 +69,11 @@ public class ImageTrackingManager : MonoBehaviour
                 instance.SetActive(true);
                 instance.transform.SetPositionAndRotation(trackedImage.transform.position, trackedImage.transform.rotation);
             }
-            else
-            {
-                // Hide if tracking is "Limited" or "None"
-                instance.SetActive(false);
-            }
+            // else
+            // {
+            //     // Hide if tracking is "Limited" or "None"
+            //     instance.SetActive(false);
+            // }
         }
     }
 }
