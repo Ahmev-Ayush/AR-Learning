@@ -25,7 +25,7 @@ public class changeScene : MonoBehaviour
 
         public void LoadScene4()
     {
-        SceneManager.LoadScene("carSceneTest");
+        SceneManager.LoadScene("SceneTest");
     }
 
     public void exitApp()

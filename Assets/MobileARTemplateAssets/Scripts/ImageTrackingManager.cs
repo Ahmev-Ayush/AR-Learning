@@ -50,7 +50,7 @@ public class ImageTrackingManager : MonoBehaviour
         // Check if the reference image or its name is null before proceeding
         if (trackedImage.referenceImage == null || string.IsNullOrEmpty(trackedImage.referenceImage.name))
         {
-            Debug.LogWarning("Found a tracked image with no reference name!");
+            // Debug.LogWarning("Found a tracked image with no reference name!");
             return; 
         }
 
