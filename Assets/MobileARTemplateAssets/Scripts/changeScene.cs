@@ -23,11 +23,16 @@ public class changeScene : MonoBehaviour
         SceneManager.LoadScene("ImageTrackingScene");
     }
 
-        public void LoadScene4()
+    public void LoadScene4()
     {
         SceneManager.LoadScene("SceneTest");
     }
 
+    public void LoadScene5()
+    {
+        SceneManager.LoadScene("BallShootingGameScene");
+    }
+    
     public void exitApp()
     {
         Application.Quit();

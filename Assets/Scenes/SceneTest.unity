@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f8e34c659c8eb42a74f9551f38ea5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cloudpointToPlacePrefab
-  prefabToPlace: {fileID: 4474089737721532156, guid: 9f3c10ee4641bbf4dbb48a39ff00f33b, type: 3}
+  prefabToPlace: {fileID: 2753714684915186179, guid: 84f4d547ea9ec4b408d75dea964a952a, type: 3}
   aRRaycastManager: {fileID: 888371492}
 --- !u!4 &654983160
 Transform:
