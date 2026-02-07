@@ -25,7 +25,7 @@ public class changeScene : MonoBehaviour
 
     public void LoadScene4()
     {
-        SceneManager.LoadScene("SceneTest");
+        SceneManager.LoadScene("PointCloudScene");
     }
 
     public void LoadScene5()

@@ -54,6 +54,7 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
 ## Working with Scenes
 - **ScenePrime** – default showcase scene combining plane toggles, menu controls, and placement scripts.
 - **ImageTrackingScene** – configured with a reference image library to test `ImageTrackingManager` and prefab spawning.
+- **PointCloudScene** – use to place a flying saucer prefab to interact with point cloud feature points.
 - **carScene** – uses the car placement scripts to anchor a vehicle prefab on detected planes.
 - **BallShootingGameScene**, **Scene_Dragon**, **SceneTest** – experimental playgrounds for physics interactions and alternative assets; ideal for extending the template.
 
