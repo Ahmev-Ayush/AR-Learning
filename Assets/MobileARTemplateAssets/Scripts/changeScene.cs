@@ -38,5 +38,11 @@ public class changeScene : MonoBehaviour
         Application.Quit();
     }
 
+    // restart scene function for testing purposes
+    public void restartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 
 }

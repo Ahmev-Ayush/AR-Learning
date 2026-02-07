@@ -12,6 +12,7 @@ public class PerformanceMonitor : MonoBehaviour
     ProfilerRecorder gcReservedMemoryRecorder; // memory reserved by the GC, which may be larger than the actual used memory
     ProfilerRecorder gpuFrameTimeRecorder;     // time taken by the GPU to render the current frame
     ProfilerRecorder drawCallsRecorder;        // number of draw calls issued in the current frame
+    // ProfilerRecorder systemFreeMemoryRecorder; // amount of free memory available on the system (useful for mobile devices)
 
     void OnEnable()
     {
@@ -20,6 +21,7 @@ public class PerformanceMonitor : MonoBehaviour
         gcReservedMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "GC Reserved Memory");
         gpuFrameTimeRecorder     = ProfilerRecorder.StartNew(ProfilerCategory.Render, "GPU Frame Time");
         drawCallsRecorder        = ProfilerRecorder.StartNew(ProfilerCategory.Render, "Draw Calls Count");
+        // systemFreeMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "System Free Memory");
     }
 
     void OnDisable()
@@ -28,6 +30,7 @@ public class PerformanceMonitor : MonoBehaviour
         gcReservedMemoryRecorder.Dispose();
         gpuFrameTimeRecorder.Dispose();
         drawCallsRecorder.Dispose();
+        // systemFreeMemoryRecorder.Dispose();
     }
 
     void Update()
@@ -40,10 +43,12 @@ public class PerformanceMonitor : MonoBehaviour
         
         // Convert GPU nanoseconds to milliseconds
         double gpuMs = gpuFrameTimeRecorder.LastValue * (1e-6f);
+        // double freeMem = systemFreeMemoryRecorder.LastValue / (1024 * 1024);
 
         sb.AppendLine($"Total Mem : {usedMem:F1} MB"); // actual amount of RAM currently allocated by the application
         sb.AppendLine($"GC Mem    : {gcMem:F1} MB");   // memory reserved by the GC, which may be larger than the actual used memory
-        sb.AppendLine($"GPU Time  : {gpuMs:F2} ms");   // time taken by the GPU to render the current frame
+        // sb.AppendLine($"Free Mem  : {freeMem:F1} MB"); // amount of free memory available on the system
+        // sb.AppendLine($"GPU Time  : {gpuMs:F2} ms");   // time taken by the GPU to render the current frame
         // sb.AppendLine($"Draw Calls: {drawCallsRecorder.LastValue}"); // number of draw calls issued in the current frame
 
         statsText.text = sb.ToString();
