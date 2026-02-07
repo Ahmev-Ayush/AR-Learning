@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 // 2. Alias for Touch to avoid ambiguity
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch; 
+using UnityEngine.EventSystems; // For UI interaction checks
 
 
 public class placeCarInScene : MonoBehaviour
@@ -58,15 +59,30 @@ public class placeCarInScene : MonoBehaviour
     private bool IsTouchInput()
     {
         return Touch.activeTouches.Count > 0 && 
-               Touch.activeTouches[0].phase == UnityEngine.InputSystem.TouchPhase.Began;
+               Touch.activeTouches[0].phase == UnityEngine.InputSystem.TouchPhase.Began && !IsPointerOverUI(Touch.activeTouches[0]);
     }
 
     // Helper to check for Mouse Click (Works in Editor)
+    // private bool IsMouseInput()
+    // {
+    //     return Mouse.current != null && 
+    //            Mouse.current.leftButton.wasPressedThisFrame ;
+    // }
+
     private bool IsMouseInput()
-    {
-        return Mouse.current != null && 
-               Mouse.current.leftButton.wasPressedThisFrame;
-    }
+{
+    // 1. Safety check for the mouse device
+    if (Mouse.current == null) return false;
+
+    // 2. Check if the button was actually pressed
+    bool clicked = Mouse.current.leftButton.wasPressedThisFrame;
+
+    // 3. Check if the mouse is currently over a UI element (EventSystem)
+    // If it IS over UI, we return false because we don't want to trigger "game" input.
+    bool overUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+
+    return clicked && !overUI;
+}
 
     private void PlaceCar()
     {
@@ -107,5 +123,11 @@ public class placeCarInScene : MonoBehaviour
         {
             placementIndicator.SetActive(false);
         }
+    }
+
+        private bool IsPointerOverUI(Touch touch)
+    {
+        // Check if the touch is over a UI element
+        return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.finger.index);
     }
 }
