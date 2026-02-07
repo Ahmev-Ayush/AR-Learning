@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.EventSystems;
 
 public class PlaceDragInScene_NewInputSystem : MonoBehaviour
 {
@@ -18,15 +19,24 @@ public class PlaceDragInScene_NewInputSystem : MonoBehaviour
 
         if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame && ARModeController.IsPlacementAllowed)
         {
-            isPlacing = true;
-
             Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+            if (IsPointerOverUI(touchPosition))
+            {
+                return;
+            }
+
+            isPlacing = true;
             PlaceObject(touchPosition);
         }
         else if(Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame && ARModeController.IsPlacementAllowed)
         {
-            isPlacing = true;
             Vector2 mousePosition = Mouse.current.position.ReadValue();
+            if (IsPointerOverUI(mousePosition))
+            {
+                return;
+            }
+
+            isPlacing = true;
             PlaceObject(mousePosition);
         }
     }
@@ -53,4 +63,17 @@ public class PlaceDragInScene_NewInputSystem : MonoBehaviour
         isPlacing = false;
     }
 
+    private bool IsPointerOverUI(Vector2 screenPosition)
+    {
+        if (EventSystem.current == null) return false;
+
+        var eventData = new PointerEventData(EventSystem.current)
+        {
+            position = screenPosition
+        };
+
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        return results.Count > 0;
+    }
 }
