@@ -71,4 +71,4 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
 - **Build errors about missing TMP assets** – Reimport TextMeshPro Essentials via `Window → TextMeshPro → Import TMP Essential Resources`.
 
 ## License
-No license file is currently included. Add one (MIT, Apache-2.0, etc.) before distributing or open-sourcing derived work.
+Distributed under the [MIT License](LICENSE). Review the license text before shipping commercial builds or redistributing modified assets.
