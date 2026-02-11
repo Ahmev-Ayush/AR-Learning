@@ -1,6 +1,8 @@
-# Plane Detection AR Template
+# AR Learning (Unity AR foundation : ARCore)
 
-An AR Foundation sample focused on reliable plane detection, responsive placement controls, and lightweight diagnostics. The project targets Unity **6000.2.6f2** (Unity 6) and ships with XR Interaction Toolkit, ARCore XR Plug-in, and AR Foundation 6.2, making it a solid starting point for Android or iOS AR prototypes.
+An AR Foundation sample focused on reliable plane detection, responsive placement controls, and lightweight diagnostics. The project targets Unity **6000.2.6f2** (Unity 6) and ships with XR Interaction Toolkit, ARCore XR Plug-in, and AR Foundation 6.2, making it a solid starting point for Android AR prototypes.
+
+Repository URL: https://github.com/Ahmev-Ayush/AR-Learning.git
 
 ## Feature Highlights
 - **Plane management UI** – `ARModeController` lets you toggle detection, hide planes, remove tracked planes, or delete spawned content while guarding other placement scripts through a shared `IsPlacementAllowed` flag.
@@ -19,16 +21,16 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
 | `Build` | Auto-generated Burst debug data from previous builds (safe to delete if storage is a concern). |
 
 ## Requirements
-- Unity Hub with **Unity 6000.2.6f2** plus Android (or iOS) Build Support, OpenJDK, and SDK/NDK tools.
-- ARCore- or ARKit-capable device running Android 10+ or iOS 15+.
-- USB debugging enabled (Android) or a valid Apple provisioning profile (iOS).
+- Unity Hub with **Unity 6000.2.6f2** plus Android  Build Support, OpenJDK, and SDK/NDK tools.
+- ARCore-device running Android 10+ .
+- USB debugging enabled (Android).
 - Optional: TextMeshPro Essentials imported (already configured in this project) for the diagnostics overlay.
 
 ## Quick Start
-1. Clone or download the repository into a local folder.
+1. Clone the repository (`git clone https://github.com/Ahmev-Ayush/AR-Learning.git`) or download the ZIP into a local folder.
 2. Open Unity Hub → **Open** → select `Plane Detection/Plane Detection.sln` or the folder root.
 3. When prompted, install Unity 6000.2.6f2; allow the Editor to update the project.
-4. In **Build Settings**, switch the platform to **Android** (or **iOS**) and click **Apply**.
+4. In **Build Settings**, switch the platform to **Android**  and click **Apply**.
 5. Open `Assets/Scenes/ScenePrime.unity` to explore the standard plane-detection flow. Use Play Mode with a webcam/AR simulation or deploy to device for accurate tracking.
 6. Connect a device, press **Build & Run**, and test the placement modes, menu toggles, and debug overlays directly on hardware.
 
@@ -36,8 +38,7 @@ An AR Foundation sample focused on reliable plane detection, responsive placemen
 - **Android**: 
 	- Enable **ARM64** architecture with IL2CPP and strip unused managed code for smaller builds.
 	- Under **Project Settings → XR Plug-in Management**, enable **ARCore** for Android and ensure required permissions (camera) are checked.
-	- If you use feature-point placement, keep depth and point-cloud subsystems enabled in **AR Session Origin**.
-- **iOS**:
+	- If you use feature-point placement, keep depth and point-cloud subsystems enabled in **AR Session Origin**:
 	- Enable **ARKit** plus **Requires ARKit support** in **XR Plug-in Management**.
 	- In Xcode, set the provisioning profile and add a usage description for camera access in `Info.plist`.
 
