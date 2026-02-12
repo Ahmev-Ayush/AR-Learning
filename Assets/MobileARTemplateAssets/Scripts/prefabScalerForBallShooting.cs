@@ -6,6 +6,7 @@ public class prefabScalerForBallShooting : MonoBehaviour
     [Header("Scaling Factor")]
     [Range(0.1f, 10f)]
     public float scaleFactor = 1f;
+    public float scaleStep = 0.5f; // step size for scaling the prefabs
 
     [Header("Court Settings")]
     // court Game Object to scale
@@ -25,17 +26,21 @@ public class prefabScalerForBallShooting : MonoBehaviour
     // default scale factor for the ball
     public float defaultScaleFactorBall = 0.01167f;
 
-
+    [Header("Court Rotation and Positioning")]
+    public float rotateCourt = 90f; // rotation angle the court to face
+    public float value_to_spawn_in_front = 6.0f; // distance in front of the camera to spawn the court
 
     // on validate, update the scale of the court and racket prefabs
     public void OnValidate()
     {
         UpdateScale();
+        PositionObjectInFront();
     }
 
     void Start()
     {
         UpdateScale();
+        PositionObjectInFront();
     }
 
 
@@ -56,5 +61,32 @@ public class prefabScalerForBallShooting : MonoBehaviour
         }
     }
 
+    // scale up the prefabs by increasing the scale factor (with a maximum of 10)
+    public void ScaleUp()
+    {
+        scaleFactor = Mathf.Min(10f, scaleFactor + scaleStep); // prevent scaling above 10
+        UpdateScale();
+    }
+
+    // scale down the prefabs by decreasing the scale factor
+    public void ScaleDown()
+    {
+        scaleFactor = Mathf.Max(0.1f, scaleFactor - scaleStep); // prevent scaling below 0.1
+        UpdateScale();
+    }
+    void PositionObjectInFront()
+    {
+        // Position it 2 units in front of the camera
+        Vector3 spawnPos = Camera.main.transform.position + (Camera.main.transform.forward * value_to_spawn_in_front);
+
+        // Optional: Keep it at a specific height (e.g., ground level)
+        spawnPos.y = -1.0f; 
+
+        CourtPrefab.transform.position = spawnPos;
+
+        // Make the object look at the user, but stay upright
+        CourtPrefab.transform.LookAt(new Vector3(Camera.main.transform.position.x, CourtPrefab.transform.position.y, Camera.main.transform.position.z));
+        CourtPrefab.transform.Rotate(0, rotateCourt, 0); // Flip it to face the camera correctly
+    }
 
 }
