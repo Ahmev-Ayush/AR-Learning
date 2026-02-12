@@ -10,7 +10,12 @@
 - Added rigidBody and necessary colliders to the gameObjects.
 - added scriptable object script to handle all the game value data (ItemData.cs).
 
+## 🗓️ 12-02-2026 
 
+**Time Spent:** ~
+**What I Did:**
+- Scaling script attached to court prefab
+-
 ---
 
 <!-- Keep adding entries as you work -->

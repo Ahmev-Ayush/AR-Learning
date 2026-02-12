@@ -1,0 +1,27 @@
+📦 YourProject/
+├── 📂 Assets/
+│   ├── 📂 Butterfly (Animated)/
+│   ├── 📂 MobileARTemplateAssets/
+│   │   ├── 📂 Materials/
+│   │   ├── 📂 Prefabs/
+│   │   ├── 📂 Scripts/     ← All scripts used in the project are here
+│   │   ├── 📂 Shaders/
+│   │   ├── 📂 Tutorial/
+│   │   └── 📂 UI/
+│   ├── 📂 Prefabs/         ← All prefabs are here that are used in the project
+│   ├── 📂 Resources/
+│   │   ├── 📂 Images/      
+│   │   └── 📂 Materials/   ← All Materials are here that are used in the project
+│   ├── 📂 Samples/
+│   ├── 📂 Settings/
+│   ├── 📂 Scenes/
+│   ├── 📂 TextMesh Pro/
+│   ├── 📂 XR/
+│   └── 📂 models/
+├── 📂 Docs/                  ← documentation lives here
+│   ├── 📂 screenshots/
+│   ├── 📂 gifs/
+├── 📄 .gitignore
+├── 📄 README.md
+├── 📄 project-structure.txt   
+└── 📄 DEVLOG.md               
