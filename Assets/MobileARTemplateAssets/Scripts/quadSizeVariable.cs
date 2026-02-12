@@ -1,25 +1,25 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class quadSizeVariable : MonoBehaviour
 {
-    public ScriptableObjectScript ItemData;
+    [Range(0.1f, 10f)] // adds a handy slider in the inspector
+    public float quadSize = 1;
 
-    // void OnValidate()
-    // {
-    //     setScale(quadSize);
-    // }
+    void OnValidate()
+    {
+        setScale(quadSize);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        setScale(ItemData.quadSize);
+        setScale(quadSize);
     }
 
     void setScale(float newSize)
     {
         // 2:1 is the aspect ratio of the quad (width:height)
-        transform.localScale = new Vector3(2 * ItemData.quadSize, ItemData.quadSize, 1f);
+        transform.localScale = new Vector3(2 * quadSize, quadSize, quadSize);
     }
 
 }
