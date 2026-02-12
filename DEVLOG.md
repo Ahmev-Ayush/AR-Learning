@@ -15,7 +15,7 @@
 **Time Spent:** ~
 **What I Did:**
 - Scaling script attached to court prefab
--
+- gameObject called *prefabScaler*
 ---
 
 <!-- Keep adding entries as you work -->
